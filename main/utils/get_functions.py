@@ -6,14 +6,14 @@ from ..trains import Train
 
 def get_station_with_id(id_: int) -> Optional[Station]:
     for station in Station.load_stations():
-        if id_ == station.id:
+        if int(id_) == station.id:
             return station
     return None
 
 
 def get_train_with_id(id_: int) -> Optional[Train]:
     for train in Train.load_trains():
-        if id_ == train.id:
+        if int(id_) == train.id:
             return train
     return None
 

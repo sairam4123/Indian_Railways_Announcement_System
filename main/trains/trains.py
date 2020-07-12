@@ -3,8 +3,8 @@ import random
 from pathlib import Path
 from typing import List, Optional, Type
 
-from main.errors import TrainNameError, TrainNumberError
 from ..constants import *
+from ..errors import TrainNameError, TrainNumberError
 from ..utils.list_manipulation import check_a_list_eq_eq_another_string, check_a_list_in_another_string
 
 

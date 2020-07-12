@@ -5,16 +5,72 @@
             "stationName": "Chennai",
             "stationType": "Egmore",
             "stationArrivals": {
-                "trains": [
-                    []
-                ]
+                "trains": []
             },
             "stationDepartures": {
-                "trains": [
-                    []
-                ]
+                "trains": []
             },
             "stationPlatformCount": "3"
+        },
+        {
+            "stationID": 176484153067,
+            "stationName": "Tiruchirapalli ",
+            "stationType": "Junction",
+            "stationArrivals": {
+                "trains": []
+            },
+            "stationDepartures": {
+                "trains": []
+            },
+            "stationPlatformCount": "5"
+        },
+        {
+            "stationID": 590798462347,
+            "stationName": "Vilupuram",
+            "stationType": "Junction",
+            "stationArrivals": {
+                "trains": []
+            },
+            "stationDepartures": {
+                "trains": []
+            },
+            "stationPlatformCount": "6"
+        },
+        {
+            "stationID": 263994043738,
+            "stationName": "Virudhachalam",
+            "stationType": "Junction",
+            "stationArrivals": {
+                "trains": []
+            },
+            "stationDepartures": {
+                "trains": []
+            },
+            "stationPlatformCount": "5"
+        },
+        {
+            "stationID": 211580943780,
+            "stationName": "Karaikudi",
+            "stationType": "Junction",
+            "stationArrivals": {
+                "trains": []
+            },
+            "stationDepartures": {
+                "trains": []
+            },
+            "stationPlatformCount": "5"
+        },
+        {
+            "stationID": 843757823427,
+            "stationName": "Tambaram",
+            "stationType": "Junction",
+            "stationArrivals": {
+                "trains": []
+            },
+            "stationDepartures": {
+                "trains": []
+            },
+            "stationPlatformCount": "6"
         }
     ]
 }

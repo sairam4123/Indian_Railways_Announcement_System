@@ -1,5 +1,6 @@
 import main.announcement
 import main.utils.get_functions
+# import main.stations
 
 # main.trains.Train.load_trains()
 # main.stations.Station.load_stations()
@@ -10,5 +11,5 @@ import main.utils.get_functions
 # main.stations.Station.write_stations_to_json()
 
 announcer = main.announcement.Announcer()
-announcer.announce(main.utils.get_functions.get_station_with_id(569821404791), main.utils.get_functions.get_train_with_id(899803236143))
+announcer.announce(main.utils.get_functions.get_train_with_id(899803236143))
 announcer.runAndWait()

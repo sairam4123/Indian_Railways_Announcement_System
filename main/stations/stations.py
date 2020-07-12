@@ -22,18 +22,19 @@ class Station(object):
         self.name = json_object['stationName']
         self.type = json_object['stationType']
         self.platform_count = json_object['stationPlatformCount']
-        self.arrivals = json_object['stationArrivals']['trains']
-        self.departures = json_object['stationDepartures']['trains']
+        self.arrivals = json_object['stationArrivals']['trains'] or []
+        self.departures = json_object['stationDepartures']['trains'] or []
         self.converted_train_arrivals = []
         self.converted_train_departures = []
         self.convert_arrivals_and_departures_to_train()
 
     def convert_arrivals_and_departures_to_train(self):
         for train_proxy in self.arrivals:
-            if train_proxy:
+            if train_proxy and train_proxy[0]:
+                print(train_proxy)
                 self.converted_train_arrivals.append(TrainProxy(train_proxy).convert_to_train())
         for train_proxy in self.departures:
-            if train_proxy:
+            if train_proxy and train_proxy[0]:
                 self.converted_train_departures.append(TrainProxy(train_proxy).convert_to_train())
 
     @staticmethod
@@ -62,6 +63,7 @@ class Station(object):
             'stationDepartures': {'trains': []},
             'stationPlatformCount': station_platform_count
         }
+        print(json_obj)
         ins = cls.__new__(cls)
         ins.__init__(json_obj)
         return ins
@@ -72,8 +74,8 @@ class Station(object):
             'stationID': station.id,
             'stationName': station.name,
             'stationType': station.type,
-            'stationArrivals': {'trains': [station.arrivals]},
-            'stationDepartures': {'trains': [station.departures]},
+            'stationArrivals': {'trains': station.arrivals},
+            'stationDepartures': {'trains': station.departures},
             'stationPlatformCount': station.platform_count
         }
         return dict_obj
