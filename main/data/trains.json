@@ -7,7 +7,13 @@
 			"trainType": "Express",
 			"trainStationFromID": 28581458457,
 			"trainStationToID": 5848475784,
-			"trainStationViaIDs": [5684854, 28648545, 5875756, 585784857, 15275718]
+			"trainStationViaIDs": [
+				5684854,
+				28648545,
+				5875756,
+				585784857,
+				15275718
+			]
 		}
 	]
 }
