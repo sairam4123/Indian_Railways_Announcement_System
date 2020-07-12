@@ -1,37 +1,20 @@
 {
-	"stations": [
-		{
-			"stationID": 28581458457,
-			"stationName": "Chennai",
-			"stationType": "Junction",
-			"stationArrivals": {
-				"trains": [
-					{
-						"trainID": 1515245,
-						"trainArrivalTime": 151515424515,
-						"trainPlatformNumber": 1
-					},
-					{
-						"trainID": 1541585,
-						"trainArrivalTime": 1515154245858,
-						"trainPlatformNumber": 2
-					}
-				]
-			},
-			"stationDepartures": {
-				"trains": [
-					{
-						"trainID": 1515245,
-						"trainDepartureTime": 151515584264515,
-						"trainPlatformNumber": 1
-					},
-					{
-						"trainID": 1541585,
-						"trainDepartureTime": 1514515424515,
-						"trainPlatformNumber": 2
-					}
-				]
-			}
-		}
-	]
+    "stations": [
+        {
+            "stationID": 569821404791,
+            "stationName": "Chennai",
+            "stationType": "Egmore",
+            "stationArrivals": {
+                "trains": [
+                    []
+                ]
+            },
+            "stationDepartures": {
+                "trains": [
+                    []
+                ]
+            },
+            "stationPlatformCount": "3"
+        }
+    ]
 }

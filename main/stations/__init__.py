@@ -1,1 +1,1 @@
-from .stations import *
+from .stations import Station

@@ -1,1 +1,1 @@
-from .trains import *
+from .trains import Train, TrainProxy
