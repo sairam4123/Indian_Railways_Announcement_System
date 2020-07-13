@@ -1,4 +1,5 @@
 import io
+from pathlib import Path
 
 import pygame
 from googletrans import Translator
@@ -22,6 +23,13 @@ def announce(train: Train, languages=None):
 
     if languages is None:
         languages = ['en', 'ta', 'hi']
+    sound_files = [path for path in (Path('main') / 'sounds').iterdir()]
+    pygame.mixer.init()
+    sound_file = sound_files[0].open('rb')
+    pygame.mixer.music.load(sound_file)
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():
+        continue
     for lang in languages:
         with io.BytesIO() as f:
             translated = Translator().translate(msg, dest=lang).text
