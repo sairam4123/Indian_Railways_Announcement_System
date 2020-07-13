@@ -2,8 +2,8 @@
     "stations": [
         {
             "stationID": 569821404791,
-            "stationName": "Chennai",
-            "stationType": "Egmore",
+            "stationName": "Chennai Egmore",
+            "stationType": "Junction",
             "stationArrivals": {
                 "trains": []
             },

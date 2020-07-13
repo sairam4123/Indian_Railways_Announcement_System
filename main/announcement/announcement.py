@@ -1,25 +1,37 @@
-import pyttsx3
+import io
 
-from main.trains import Train
-from main.utils.converters import convert_list_of_any_to_specific_thing
-from main.utils.get_functions import get_station_with_id
+import pygame
+from googletrans import Translator
+from gtts import gTTS
+
+from ..trains import Train
+from ..utils.converters import convert_list_of_any_to_specific_thing
+from ..utils.get_functions import get_station_with_id
 
 
-class Announcer(pyttsx3.Engine):
-    def __init__(self):
-        super(Announcer, self).__init__()
+# To play audio text-to-speech during execution
+def announce(train: Train, languages=None):
+    from_station = get_station_with_id(train.station_from_id)
+    to_station = get_station_with_id(train.station_to_id)
+    via_stations = convert_list_of_any_to_specific_thing(train.station_via_ids, get_station_with_id)
+    via_stations_names = " ; ".join([station.name for station in via_stations])
+    train.correct_number = " ; ".join(list(train.number)) + " ;"
+    msg = (f'Your kind attention of Passengers! Train Number {train.correct_number} {train.name} {train.type} '
+           f'bound for {to_station.name} from {from_station.name}' + (f" via {via_stations_names}" if via_stations else "")
+           + f" is scheduled to depart from platform number {4} at {3}:{45} {'PM'}")
 
-    def announce(self, train: Train):
-        from_station = get_station_with_id(train.station_from_id)
-        to_station = get_station_with_id(train.station_to_id)
-        via_stations = convert_list_of_any_to_specific_thing(train.station_via_ids, get_station_with_id)
-        print(via_stations)
-        via_stations_names = ";".join([station.name for station in via_stations])
-        train.correct_number = ";".join(list(train.number)) + ";"
-        self.setProperty('rate', 100)
-        self.say(f'Your kind attention of Passengers! Train Number {train.correct_number} {train.name} {train.type} '
-                 f'bound for {to_station.name} from {from_station.name}' + (f" via {via_stations_names}" if via_stations else "")
-                 + f" is scheduled to depart from platform number {2} at {12}:{46} {'PM'}")
+    if languages is None:
+        languages = ['en', 'ta', 'hi']
+    for lang in languages:
+        with io.BytesIO() as f:
+            translated = Translator().translate(msg, dest=lang).text
+            gTTS(text=translated, lang=lang).write_to_fp(f)
+            f.seek(0)
+            pygame.mixer.init()
+            pygame.mixer.music.load(f)
+            pygame.mixer.music.play()
+            while pygame.mixer.music.get_busy():
+                continue
 
 # engine = pyttsx3.init()
 # engine.say("1;2;3;4;5")

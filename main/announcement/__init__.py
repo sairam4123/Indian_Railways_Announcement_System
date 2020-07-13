@@ -1,1 +1,1 @@
-from .announcement import Announcer
+from .announcement import announce

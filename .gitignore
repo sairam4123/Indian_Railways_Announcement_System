@@ -139,3 +139,13 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+.idea/.gitignore
+.idea/Indian_Railways_Announcement_System.iml
+.idea/codeStyles/
+.idea/dictionaries/
+.idea/discord.xml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml

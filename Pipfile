@@ -8,6 +8,10 @@ verify_ssl = true
 [packages]
 pyttsx3 = "*"
 googletrans = "*"
+gtts = "*"
+ffmpeg-python = "*"
+simpleaudio = "*"
+pygame = "*"
 
 [requires]
 python_version = "3.8"
