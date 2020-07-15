@@ -1,7 +1,8 @@
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
-from ..stations import Station
-from ..trains import Train
+if TYPE_CHECKING:
+    from ..stations import Station
+    from ..trains import Train
 
 
 def get_station_with_id(id_: int) -> Optional[Station]:

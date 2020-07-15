@@ -71,6 +71,18 @@
                 "trains": []
             },
             "stationPlatformCount": "6"
+        },
+        {
+            "stationID": 168137886969,
+            "stationName": "Chengalpattu",
+            "stationType": "Junction",
+            "stationArrivals": {
+                "trains": []
+            },
+            "stationDepartures": {
+                "trains": []
+            },
+            "stationPlatformCount": "5"
         }
     ]
 }

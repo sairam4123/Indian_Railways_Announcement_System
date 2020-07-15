@@ -41,10 +41,3 @@ def announce(train: Train, languages=None):
             while pygame.mixer.music.get_busy():
                 continue
 
-# engine = pyttsx3.init()
-# engine.say("1;2;3;4;5")
-# engine.runAndWait()
-
-# Translator().translate(f'Your kind attention of Passengers! Train Number {train.correct_number} {train.name} {train.type} '
-#                  f'bound for {to_station.name} from {from_station.name}' + (f" via {via_stations_names}" if via_stations else "")
-#                  + f" is scheduled to depart from platform number {2} at {12}:{46} {'PM'}", dest="ta").text

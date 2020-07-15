@@ -32,3 +32,7 @@ class StationTypeError(StationError):
 
 class StationNotFoundError(StationError):
     pass
+
+
+class StationCodeError(StationError):
+    pass
