@@ -1,20 +1,20 @@
 import io
+import os
 from pathlib import Path
 
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame
 from googletrans import Translator
 from gtts import gTTS
 
-from ..trains import Train
-from ..utils.converters import convert_list_of_any_to_specific_thing
-from ..utils.get_functions import get_station_with_id
+import iras
 
 
 # To play audio text-to-speech during execution
-def announce(train: Train, languages=None):
-    from_station = get_station_with_id(train.station_from_id)
-    to_station = get_station_with_id(train.station_to_id)
-    via_stations = convert_list_of_any_to_specific_thing(train.station_via_ids, get_station_with_id)
+def announce(train: iras.Train, languages=None):
+    from_station = iras.get_station_with_id(train.station_from_id)
+    to_station = iras.get_station_with_id(train.station_to_id)
+    via_stations = iras.convert_list_of_any_to_specific_thing(train.station_via_ids, iras.get_station_with_id)
     via_stations_names = " ; ".join([station.name for station in via_stations])
     train.correct_number = " ; ".join(list(train.number)) + " ;"
     msg = (f'Your kind attention of Passengers! Train Number {train.correct_number} {train.name} {train.type} '
@@ -40,4 +40,3 @@ def announce(train: Train, languages=None):
             pygame.mixer.music.play()
             while pygame.mixer.music.get_busy():
                 continue
-

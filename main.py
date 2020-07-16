@@ -1,4 +1,4 @@
-from main.__main__ import main_file
+import iras
 
 if __name__ == '__main__':
-    main_file()
+    iras.main()

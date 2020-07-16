@@ -1,12 +1,8 @@
 import json
 import random
-from pathlib import Path
 from typing import Type
 
-from ..constants import *
-from ..errors import StationCodeError, StationNameError
-from ..trains.trains import TrainProxy
-from ..utils.list_manipulation import check_a_list_eq_eq_another_string, check_a_list_in_another_string
+import iras
 
 
 class Station(object):
@@ -33,33 +29,34 @@ class Station(object):
         for train_proxy in self.arrivals:
             if train_proxy:
                 train_proxy['trainStationID'] = self.id
-                self.converted_train_arrivals.append(TrainProxy(train_proxy).convert_to_train())
+                self.converted_train_arrivals.append(iras.TrainProxy(train_proxy).convert_to_train())
         for train_proxy in self.departures:
             if train_proxy:
                 train_proxy['trainStationID'] = self.id
-                self.converted_train_departures.append(TrainProxy(train_proxy).convert_to_train())
+                self.converted_train_departures.append(iras.TrainProxy(train_proxy).convert_to_train())
 
     @staticmethod
-    def load_stations(file=Path('main') / 'data' / 'stations.json'):
-        Station._stations.clear()
+    def load_stations(file=iras.ANNOUNCEMENT_STATION_DATA_PATH):
+        if Station._stations:
+            Station._stations.clear()
         stations = json.load(open(file))['stations']
         return [Station(station) for station in stations]
 
     @classmethod
     def create_station(cls):
         print("This is the Interactive Station Builder!")
-        if check_a_list_eq_eq_another_string(['yes', 'y', 'yes()'], input("Do you want to exit?: >>> ")):
+        if iras.check_a_list_eq_eq_another_string(['yes', 'y', 'yes()'], input("Do you want to exit?: >>> ")):
             return
         station_name = input("Don't say the Junction here.\nWhat is the station name?: >>> ")
-        if check_a_list_in_another_string(['jn', 'jnc', 'jnction', 'junction', 'j'], station_name):
-            raise StationNameError("station name must not contain junction")
+        if iras.check_a_list_in_another_string(['jn', 'jnc', 'jnction', 'junction', 'j'], station_name):
+            raise iras.StationNameError("station name must not contain junction")
         station_type = input("Put the type here.\nWhat is the station type?: >>> ")
         station_platform_count = input("What is the number of platforms your station has?: >>> ")
         station_code = input("What is the station code of the station you're inputting?: >>> ").upper()
         if len(station_code) > 5:
-            raise StationCodeError("station code must not exceed 4")
+            raise iras.StationCodeError("station code must not exceed 4")
         json_obj = {
-            'stationID': random.randint(MIN_ID_NUMBER, MAX_ID_NUMBER),
+            'stationID': random.randint(iras.MIN_ID_NUMBER, iras.MAX_ID_NUMBER),
             'stationName': station_name,
             'stationType': station_type,
             'stationCode': station_code,
@@ -72,7 +69,10 @@ class Station(object):
         return ins
 
     def __del__(self):
-        self._stations.remove(id(self))
+        try:
+            self._stations.remove(id(self))
+        except (ValueError, TypeError):
+            pass
 
     @staticmethod
     def convert_self_to_dict(station):
@@ -87,20 +87,6 @@ class Station(object):
         return dict_obj
 
     @staticmethod
-    def get_station_from_name(name: str):
-        for station in Station.load_stations():
-            if name == station.name:
-                return station
-        return None
-
-    @staticmethod
-    def get_station_from_id(id_: int):
-        for station in Station.load_stations():
-            if int(id_) == station.id:
-                return station
-        return None
-
-    @staticmethod
     def write_stations_to_json():
         train_json = {
             'stations': []
@@ -108,7 +94,7 @@ class Station(object):
         for train in Station.load_stations():
             train_json['stations'].append(Station.convert_self_to_dict(train))
 
-        json.dump(train_json, open(Path('main') / 'data' / 'stations.json', mode='w'), indent=4)
+        json.dump(train_json, open(iras.ANNOUNCEMENT_STATION_DATA_PATH, mode='w'), indent=4)
 
     def __str__(self):
-        return f"{self.name} {self.type} with station code {self.code} and number of platforms {self.platform_count} {len(self.arrivals)} arrivals and {len(self.departures)} departures."
+        return f"{self.name} {self.type if len(self.name) > 2 else ''} station code {self.code}, number of platforms {self.platform_count} with {len(self.arrivals)} arrivals and {len(self.departures)} departures."

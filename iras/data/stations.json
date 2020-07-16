@@ -4,6 +4,7 @@
             "stationID": 569821404791,
             "stationName": "Chennai Egmore",
             "stationType": "Junction",
+            "stationCode": "MS",
             "stationArrivals": {
                 "trains": []
             },
@@ -14,8 +15,9 @@
         },
         {
             "stationID": 176484153067,
-            "stationName": "Tiruchirapalli ",
+            "stationName": "Tiruchirapalli",
             "stationType": "Junction",
+            "stationCode": "TPJ",
             "stationArrivals": {
                 "trains": []
             },
@@ -28,6 +30,7 @@
             "stationID": 590798462347,
             "stationName": "Vilupuram",
             "stationType": "Junction",
+            "stationCode": "VM",
             "stationArrivals": {
                 "trains": []
             },
@@ -38,8 +41,9 @@
         },
         {
             "stationID": 263994043738,
-            "stationName": "Virudhachalam",
+            "stationName": "Vridhachalam",
             "stationType": "Junction",
+            "stationCode": "VRI",
             "stationArrivals": {
                 "trains": []
             },
@@ -52,6 +56,7 @@
             "stationID": 211580943780,
             "stationName": "Karaikudi",
             "stationType": "Junction",
+            "stationCode": "KKDI",
             "stationArrivals": {
                 "trains": []
             },
@@ -64,6 +69,7 @@
             "stationID": 843757823427,
             "stationName": "Tambaram",
             "stationType": "Junction",
+            "stationCode": "TBM",
             "stationArrivals": {
                 "trains": []
             },
@@ -76,6 +82,7 @@
             "stationID": 168137886969,
             "stationName": "Chengalpattu",
             "stationType": "Junction",
+            "stationCode": "CGL",
             "stationArrivals": {
                 "trains": []
             },
