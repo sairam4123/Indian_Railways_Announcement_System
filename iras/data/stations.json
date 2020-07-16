@@ -15,7 +15,7 @@
         },
         {
             "stationID": 176484153067,
-            "stationName": "Tiruchirapalli",
+            "stationName": "Tiruchchirapali",
             "stationType": "Junction",
             "stationCode": "TPJ",
             "stationArrivals": {
@@ -28,7 +28,7 @@
         },
         {
             "stationID": 590798462347,
-            "stationName": "Vilupuram",
+            "stationName": "Villupuram",
             "stationType": "Junction",
             "stationCode": "VM",
             "stationArrivals": {
